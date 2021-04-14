@@ -5,9 +5,11 @@ using Kinect = Windows.Kinect;
 
 public class BodySourceView : MonoBehaviour 
 {
-    public Material BoneMaterial;
+    //public Material BoneMaterial;
     public GameObject BodySourceManager;
     public GameObject circle;
+
+    //public Renderer rend;
     
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
@@ -47,6 +49,8 @@ public class BodySourceView : MonoBehaviour
     private void Start()
     {
         //circle = circle.gameObject.GetComponent<GameObject>();
+        //rend = GetComponent<Renderer>();
+        //rend.enabled = false;
     }
 
 
@@ -106,15 +110,15 @@ public class BodySourceView : MonoBehaviour
             {
                 if(!_Bodies.ContainsKey(body.TrackingId))
                 {
-                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    //_Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 }
                 
-                RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                RefreshBodyObject(body);
             }
         }
     }
     
-    private GameObject CreateBodyObject(ulong id)
+    /*private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
         
@@ -133,9 +137,9 @@ public class BodySourceView : MonoBehaviour
         }
         
         return body;
-    }
+    }*/
     
-    private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
+    private void RefreshBodyObject(Kinect.Body body) //, GameObject bodyObject
     {
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
@@ -147,25 +151,25 @@ public class BodySourceView : MonoBehaviour
                 targetJoint = body.Joints[_BoneMap[jt]];
             }
             
-            Transform jointObj = bodyObject.transform.Find(jt.ToString());
-            jointObj.localPosition = GetVector3FromJoint(sourceJoint);
+            //Transform jointObj = bodyObject.transform.Find(jt.ToString());
+            //jointObj.localPosition = GetVector3FromJoint(sourceJoint);
 
             var distance = body.Joints[Kinect.JointType.SpineBase].Position;
-            Vector3 points = new Vector3(distance.X * 2, distance.Y * 2, distance.Z / 2);
+            Vector3 points = new Vector3(- distance.X * 25, 7.0f, distance.Z * 20);
             circle.transform.position = points;
             
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                //lr.SetPosition(0, jointObj.localPosition);
+                //lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                //lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
                 Debug.Log("position x: " + distance.X + "position y: " + distance.Y + "position z: " + distance.Z);
                 Debug.Log("circle position: " + points);
             }
             else
             {
-                lr.enabled = false;
+                //lr.enabled = false;
             }
         }
     }
