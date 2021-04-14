@@ -8,6 +8,14 @@ public class BodySourceView : MonoBehaviour
     //public Material BoneMaterial;
     public GameObject BodySourceManager;
     public GameObject circle;
+    public GameObject footR;
+    public GameObject footL;
+    public AudioSource Left;
+    public AudioSource right;
+    public AudioClip rightClip;
+    public AudioClip leftClip;
+    bool leftOK;
+    bool rightOK;
 
     //public Renderer rend;
     
@@ -157,15 +165,54 @@ public class BodySourceView : MonoBehaviour
             var distance = body.Joints[Kinect.JointType.SpineBase].Position;
             Vector3 points = new Vector3(- distance.X * 25, 7.0f, distance.Z * 20);
             circle.transform.position = points;
-            
+
+            var FRdistance = body.Joints[Kinect.JointType.FootRight].Position;
+            Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 5) * 5, FRdistance.Z * 20);
+            footR.transform.position = pointsRF;
+
+            var FLdistance = body.Joints[Kinect.JointType.FootLeft].Position;
+            Vector3 pointsLF = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 5) * 5, FLdistance.Z * 20);
+            footL.transform.position = pointsLF;
+            if (pointsRF.y > 21.2)
+            {
+                rightOK = true;
+            }
+            if (pointsLF.y > 21.2)
+            {
+                leftOK = true;
+            }
+
+            if ( pointsRF.y <= 21.2 && !right.isPlaying && rightOK)
+            {
+                //right.Play();
+                right.PlayOneShot(rightClip);
+                Debug.Log("right play");
+                rightOK = false;
+               
+            }
+            /*else
+            {
+                right.Stop();
+            }*/
+            if (pointsLF.y <= 21.2 && !Left.isPlaying && leftOK)
+            {
+                Left.PlayOneShot(leftClip);
+                //Left.Play();
+                Debug.Log("left play");
+                leftOK = false;
+            }
+            /*else
+            {
+                Left.Stop();
+            }*/
             //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if(targetJoint.HasValue)
+            if (targetJoint.HasValue)
             {
                 //lr.SetPosition(0, jointObj.localPosition);
                 //lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
                 //lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
-                Debug.Log("position x: " + distance.X + "position y: " + distance.Y + "position z: " + distance.Z);
-                Debug.Log("circle position: " + points);
+                //Debug.Log("position x: " + FRdistance.X + "position y: " + FRdistance.Y + "position z: " + FRdistance.Z);
+                Debug.Log("left foot: " + pointsLF + "right foot: " + pointsRF);
             }
             else
             {
