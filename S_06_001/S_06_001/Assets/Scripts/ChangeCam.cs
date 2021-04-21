@@ -12,7 +12,7 @@ public class ChangeCam : MonoBehaviour
 
     private float startTime;
     private float length;
-    float speed = 0.02f;
+    float speed = 0.03f;
 
     private bool col;
     // Start is called before the first frame update
