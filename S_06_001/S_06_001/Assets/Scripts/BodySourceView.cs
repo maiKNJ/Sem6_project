@@ -8,6 +8,7 @@ public class BodySourceView : MonoBehaviour
     //public Material BoneMaterial;
     public GameObject BodySourceManager;
     public GameObject circle;
+    public GameObject circle2;
     public GameObject footR;
     public GameObject footL;
     public AudioSource Left;
@@ -166,6 +167,10 @@ public class BodySourceView : MonoBehaviour
             Vector3 points = new Vector3(- distance.X * 25, 7.0f, distance.Z * 20);
             circle.transform.position = points;
 
+            var distance2 = body.Joints[Kinect.JointType.SpineBase].Position;
+            Vector3 points2 = new Vector3(-distance2.X * 25, 7.0f, (distance2.Z + 4.15f) * 20);
+            circle2.transform.position = points2;
+
             var FRdistance = body.Joints[Kinect.JointType.FootRight].Position;
             Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 5) * 5, FRdistance.Z * 20);
             footR.transform.position = pointsRF;
@@ -212,7 +217,7 @@ public class BodySourceView : MonoBehaviour
                 //lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
                 //lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
                 //Debug.Log("position x: " + FRdistance.X + "position y: " + FRdistance.Y + "position z: " + FRdistance.Z);
-                Debug.Log("left foot: " + pointsLF + "right foot: " + pointsRF);
+                //Debug.Log("left foot: " + pointsLF + "right foot: " + pointsRF);
             }
             else
             {
