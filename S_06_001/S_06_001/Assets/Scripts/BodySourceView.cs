@@ -191,7 +191,7 @@ public class BodySourceView : MonoBehaviour
             {
                 //right.Play();
                 right.PlayOneShot(rightClip);
-                Debug.Log("right play");
+               // Debug.Log("right play");
                 rightOK = false;
                
             }
@@ -203,7 +203,7 @@ public class BodySourceView : MonoBehaviour
             {
                 Left.PlayOneShot(leftClip);
                 //Left.Play();
-                Debug.Log("left play");
+              //  Debug.Log("left play");
                 leftOK = false;
             }
             /*else
