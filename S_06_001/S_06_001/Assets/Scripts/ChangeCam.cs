@@ -59,13 +59,13 @@ public class ChangeCam : MonoBehaviour
 
 
 
-            Debug.Log("collision");
+          //  Debug.Log("collision");
 
             //mainCam.enabled = !mainCam.enabled;
             //cam3.enabled = !cam3.enabled;
 
             //cam2.enabled = !cam2.enabled;
-            Debug.Log("Change cam" + mainCam.enabled);
+           // Debug.Log("Change cam" + mainCam.enabled);
 
 
         }
@@ -78,7 +78,7 @@ public class ChangeCam : MonoBehaviour
         up.SetActive(false);
         down.SetActive(true);
         col = false;
-        Debug.Log("See i did wait!");
+      //  Debug.Log("See i did wait!");
 
     }
     
@@ -88,7 +88,7 @@ public class ChangeCam : MonoBehaviour
         if (collision.gameObject.tag == "body")
         {
             col = false;
-            Debug.Log("col" + col);
+           // Debug.Log("col" + col);
 
 
         }

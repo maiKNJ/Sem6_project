@@ -45,7 +45,7 @@ public class MoveDown : MonoBehaviour
             Vector3 newPos = Vector3.Lerp(mainCam.transform.position, cam3.transform.position,  fractionOfJourney);
             mainCam.transform.position = newPos;
 
-            Debug.Log("something happend!");
+           // Debug.Log("something happend!");
             StartCoroutine(change());
         }
     }
@@ -56,7 +56,7 @@ public class MoveDown : MonoBehaviour
         down.SetActive(false);
         up.SetActive(true);
         col = false;
-        Debug.Log("See i did wait! part 2");
+       // Debug.Log("See i did wait! part 2");
 
     }
 
@@ -70,7 +70,7 @@ public class MoveDown : MonoBehaviour
 
 
 
-            Debug.Log("collision2");
+          //  Debug.Log("collision2");
 
             //mainCam.enabled = !mainCam.enabled;
             //cam3.enabled = !cam3.enabled;
@@ -87,7 +87,7 @@ public class MoveDown : MonoBehaviour
         if (collision.gameObject.tag == "body2")
         {
             col = false;
-            Debug.Log("col2" + col);
+           // Debug.Log("col2" + col);
         }
     }
 }
