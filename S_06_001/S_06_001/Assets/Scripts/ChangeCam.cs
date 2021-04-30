@@ -14,7 +14,8 @@ public class ChangeCam : MonoBehaviour
 
     private float startTime;
     private float length;
-    float speed = 0.03f;
+    float speed = 0.01f;
+    Vector3 velocity = Vector3.forward;
 
     private bool col;
     // Start is called before the first frame update
@@ -33,16 +34,17 @@ public class ChangeCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distCovered = 25 * speed;
+        float distCovered = 0.2f;
+        
         float fractionOfJourney = distCovered / length;
 
         if (col)
         {
             mainLight.SetActive(false);
             light2.SetActive(true);
-
-            Vector3 newPos = Vector3.Lerp(mainCam.transform.position, cam2.transform.position, fractionOfJourney);
-            mainCam.transform.position = newPos;
+            Debug.Log("number time: " + fractionOfJourney);
+           // Vector3 newPos = Vector3.Slerp(mainCam.transform.position, cam2.transform.position, 0.005f);
+            mainCam.transform.position = Vector3.SmoothDamp(mainCam.transform.position, cam2.transform.position, ref velocity, 0.2f, 20f );
             //  down.SetActive(true);
             // up.SetActive(false);
             StartCoroutine(change());
