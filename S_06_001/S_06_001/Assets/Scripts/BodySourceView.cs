@@ -172,7 +172,7 @@ public class BodySourceView : MonoBehaviour
             circle2.transform.position = points2;
 
             var FRdistance = body.Joints[Kinect.JointType.FootRight].Position;
-            Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 5) * 5, FRdistance.Z * 20);
+            Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 1) * 5, FRdistance.Z * 20);
             footR.transform.position = pointsRF;
 
             var FLdistance = body.Joints[Kinect.JointType.FootLeft].Position;
