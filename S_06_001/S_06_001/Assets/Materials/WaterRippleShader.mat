@@ -37,7 +37,7 @@ Material:
     - _Distance7: 0
     - _Distance8: 0
     - _Frequency: 1.75
-    - _Glossiness: 0
+    - _Glossiness: 0.39
     - _Metallic: 0
     - _Scale: 0.3
     - _Speed: 0.5
@@ -66,4 +66,4 @@ Material:
     - _zImpact7: 0
     - _zImpact8: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.24959952, g: 0.29563174, b: 0.745283, a: 1}

@@ -43,7 +43,7 @@ public class MoveAround : MonoBehaviour
 
         while (time < duration)
         {
-            mainCam.transform.position = Vector3.Lerp(forrest, water, time / duration);
+            mainCam.transform.position = Vector3.Slerp(forrest, water, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
@@ -65,7 +65,7 @@ public class MoveAround : MonoBehaviour
 
         while (time < duration)
         {
-            mainCam.transform.position = Vector3.Lerp(water, forrest, time / duration);
+            mainCam.transform.position = Vector3.Slerp(water, forrest, time / duration);
             time += Time.deltaTime;
             yield return null;
         }

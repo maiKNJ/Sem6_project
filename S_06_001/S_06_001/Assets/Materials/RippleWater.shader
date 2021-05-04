@@ -47,7 +47,7 @@ Shader "Custom/RippleWater" {
 
 	}
 	SubShader {
-		Tags { "RenderType"="Transparent" "Queue"="Transparent" "ForceNoShadowCasting"="True" }
+		Tags { "RenderType"="Opaque" "Queue"="Transparent" "ForceNoShadowCasting"="True" }
 		ZWrite On
 		ColorMask RGBA
 		Blend SrcAlpha OneMinusSrcAlpha

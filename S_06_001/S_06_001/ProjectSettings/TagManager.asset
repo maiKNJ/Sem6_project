@@ -8,6 +8,8 @@ TagManager:
   - up
   - down
   - body2
+  - RightFoot
+  - LeftFoot
   layers:
   - Default
   - TransparentFX

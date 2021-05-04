@@ -164,34 +164,36 @@ public class BodySourceView : MonoBehaviour
             //jointObj.localPosition = GetVector3FromJoint(sourceJoint);
 
             var distance = body.Joints[Kinect.JointType.SpineBase].Position;
-            Vector3 points = new Vector3(- distance.X * 25, 7.0f, distance.Z * 20);
+            Vector3 points = new Vector3(- distance.X * 25, 7.0f, (distance.Z - 0.5f )* 20);
             circle.transform.position = points;
 
             var distance2 = body.Joints[Kinect.JointType.SpineBase].Position;
-            Vector3 points2 = new Vector3(-distance2.X * 25, 7.0f, (distance2.Z + 4.15f) * 20);
+            Vector3 points2 = new Vector3(-distance2.X * 25, 7.0f, (distance2.Z + 3f) * 20);
             circle2.transform.position = points2;
 
             var FRdistance = body.Joints[Kinect.JointType.FootRight].Position;
-            Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 1) * 5, FRdistance.Z * 20);
-            footR.transform.position = pointsRF;
+            Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 0.6f) * 5, FRdistance.Z * 20);
+            footR.transform.position = pointsRF.normalized;
 
             var FLdistance = body.Joints[Kinect.JointType.FootLeft].Position;
-            Vector3 pointsLF = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 5) * 5, FLdistance.Z * 20);
-            footL.transform.position = pointsLF;
-            if (pointsRF.y > 21.2)
+            Vector3 pointsLF = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 0.6f) * 5, FLdistance.Z * 20);
+            footL.transform.position = pointsLF.normalized;
+
+            Debug.Log("Left foot: " + pointsLF.normalized.y + "Right foot: " + pointsRF.y);
+            if (pointsRF.y > 22)
             {
                 rightOK = true;
             }
-            if (pointsLF.y > 21.2)
+            if (pointsLF.y > 22)
             {
                 leftOK = true;
             }
 
-            if ( pointsRF.y <= 21.2 && !right.isPlaying && rightOK)
+            if ( pointsRF.y <= 21.8f && !right.isPlaying && rightOK)
             {
                 //right.Play();
-                right.PlayOneShot(rightClip);
-               // Debug.Log("right play");
+               // right.PlayOneShot(rightClip);
+                Debug.Log("right play");
                 rightOK = false;
                
             }
@@ -199,11 +201,11 @@ public class BodySourceView : MonoBehaviour
             {
                 right.Stop();
             }*/
-            if (pointsLF.y <= 21.2 && !Left.isPlaying && leftOK)
+            if (pointsLF.y <= 21.8f && !Left.isPlaying && leftOK)
             {
-                Left.PlayOneShot(leftClip);
+                //Left.PlayOneShot(leftClip);
                 //Left.Play();
-              //  Debug.Log("left play");
+               Debug.Log("left play");
                 leftOK = false;
             }
             /*else
