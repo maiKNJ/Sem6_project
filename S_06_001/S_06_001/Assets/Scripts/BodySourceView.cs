@@ -11,6 +11,8 @@ public class BodySourceView : MonoBehaviour
     public GameObject circle2;
     public GameObject footR;
     public GameObject footL;
+    public GameObject footR2;
+    public GameObject footL2;
     public AudioSource Left;
     public AudioSource right;
     public AudioClip rightClip;
@@ -179,35 +181,43 @@ public class BodySourceView : MonoBehaviour
             Vector3 pointsLF = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 0.6f) * 5, FLdistance.Z * 20);
             footL.transform.position = pointsLF.normalized;
 
-            Debug.Log("Left foot: " + pointsLF.normalized.y + "Right foot: " + pointsRF.y);
-            if (pointsRF.y > 22)
-            {
-                rightOK = true;
-            }
-            if (pointsLF.y > 22)
-            {
-                leftOK = true;
-            }
+            var FRdistance2 = body.Joints[Kinect.JointType.FootRight].Position;
+            Vector3 pointsRF2 = new Vector3(-FRdistance2.X * 25, (FRdistance2.Y + 0.6f) * 5, (FRdistance2.Z + 3f) * 20);
+            footR2.transform.position = pointsRF2.normalized;
 
-            if ( pointsRF.y <= 21.8f && !right.isPlaying && rightOK)
-            {
-                //right.Play();
-               // right.PlayOneShot(rightClip);
-                Debug.Log("right play");
-                rightOK = false;
+            var FLdistance2 = body.Joints[Kinect.JointType.FootLeft].Position;
+            Vector3 pointsLF2 = new Vector3(-FLdistance2.X * 25, (FLdistance2.Y + 0.6f) * 5, (FLdistance2.Z + 3f) * 20);
+            footL2.transform.position = pointsLF2.normalized;
+
+            Debug.Log("Left foot: " + pointsLF.normalized.y + "Right foot: " + pointsRF.y);
+            //if (pointsRF.y > 22)
+            //{
+            //    rightOK = true;
+            //}
+            //if (pointsLF.y > 22)
+            //{
+            //    leftOK = true;
+            //}
+
+            //if ( pointsRF.y <= 21.8f && !right.isPlaying && rightOK)
+            //{
+            //    //right.Play();
+            //   // right.PlayOneShot(rightClip);
+            //    Debug.Log("right play");
+            //    rightOK = false;
                
-            }
+            //}
             /*else
             {
                 right.Stop();
             }*/
-            if (pointsLF.y <= 21.8f && !Left.isPlaying && leftOK)
-            {
-                //Left.PlayOneShot(leftClip);
-                //Left.Play();
-               Debug.Log("left play");
-                leftOK = false;
-            }
+            //if (pointsLF.y <= 21.8f && !Left.isPlaying && leftOK)
+            //{
+            //    //Left.PlayOneShot(leftClip);
+            //    //Left.Play();
+            //   Debug.Log("left play");
+            //    leftOK = false;
+            //}
             /*else
             {
                 Left.Stop();
