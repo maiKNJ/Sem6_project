@@ -8297,6 +8297,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane_Uneven
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 914f9f88bc55a2c4991ee24712001a50,
+        type: 3}
+      propertyPath: m_TagString
+      value: waterSide
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914f9f88bc55a2c4991ee24712001a50, type: 3}
 --- !u!4 &1432840434 stripped

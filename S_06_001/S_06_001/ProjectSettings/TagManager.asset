@@ -10,6 +10,7 @@ TagManager:
   - body2
   - RightFoot
   - LeftFoot
+  - waterSide
   layers:
   - Default
   - TransparentFX
