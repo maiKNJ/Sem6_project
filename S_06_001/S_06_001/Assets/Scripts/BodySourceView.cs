@@ -175,21 +175,22 @@ public class BodySourceView : MonoBehaviour
 
             var FRdistance = body.Joints[Kinect.JointType.FootRight].Position;
             Vector3 pointsRF = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 0.6f) * 5, FRdistance.Z * 20);
-            footR.transform.position = pointsRF.normalized;
-
+            footR.transform.position = pointsRF;
+            
             var FLdistance = body.Joints[Kinect.JointType.FootLeft].Position;
             Vector3 pointsLF = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 0.6f) * 5, FLdistance.Z * 20);
-            footL.transform.position = pointsLF.normalized;
+            footL.transform.position = pointsLF;
+            
 
-            var FRdistance2 = body.Joints[Kinect.JointType.FootRight].Position;
-            Vector3 pointsRF2 = new Vector3(-FRdistance2.X * 25, (FRdistance2.Y + 0.6f) * 5, (FRdistance2.Z + 3f) * 20);
-            footR2.transform.position = pointsRF2.normalized;
+            Vector3 pointsRF2 = new Vector3(-FRdistance.X * 25, (FRdistance.Y + 0.8f) * 5, (FRdistance.Z + 3f) * 20);
+            footR2.transform.position = pointsRF2;
+            
+            Vector3 pointsLF2 = new Vector3(-FLdistance.X * 25, (FLdistance.Y + 0.8f) * 5, (FLdistance.Z + 3f) * 20);
+            footL2.transform.position = pointsLF2;
 
-            var FLdistance2 = body.Joints[Kinect.JointType.FootLeft].Position;
-            Vector3 pointsLF2 = new Vector3(-FLdistance2.X * 25, (FLdistance2.Y + 0.6f) * 5, (FLdistance2.Z + 3f) * 20);
-            footL2.transform.position = pointsLF2.normalized;
+            
 
-            Debug.Log("Left foot: " + pointsLF.normalized.y + "Right foot: " + pointsRF.y);
+         //   Debug.Log("Left foot: " + pointsLF.normalized.y + "Right foot: " + pointsRF.y);
             //if (pointsRF.y > 22)
             //{
             //    rightOK = true;
